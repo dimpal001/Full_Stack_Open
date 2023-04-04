@@ -3,6 +3,13 @@ sequenceDiagram;
 participant browser;
 participant server;
 
+browser->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_notes;
+activate server;
+server-->>browser: URL redirect : new HTTP GET request to/notes;
+deactivate server;
+
+Note right of browser: Browser HTTP POST request to the server address new_note. Server responds with a URL redirect.
+
 browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes;
 activate server;
 server-->>browser: HTML document;
